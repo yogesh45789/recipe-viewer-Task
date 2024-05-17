@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import RecipeList from './components/RecipeList';
 import RecipeDetail from './components/RecipeDetail';
 import FavoriteRecipes from './components/FavoriteRecipes';
-import { setRecipes } from './features/recipes/recipesSlice';
+import { setRecipes, selectRecipe } from './features/recipes/recipesSlice';
 import styles from './styles/App.module.css';
 
 const App = () => {
   const dispatch = useDispatch();
+  const selectedRecipe = useSelector(state => state.recipes.selectedRecipe);
+  const [showRecipeDetail, setShowRecipeDetail] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -24,10 +26,24 @@ const App = () => {
     fetchRecipes();
   }, [dispatch]);
 
+  const goBack = () => {
+    setShowRecipeDetail(false);
+  };
+
+  const selectRecipeHandler = (recipeId) => {
+    dispatch(selectRecipe(recipeId));
+    setShowRecipeDetail(true);
+  };
+
   return (
     <div className={styles.app}>
-      <RecipeList />
-      <RecipeDetail />
+      <div className={styles.main}>
+        {!showRecipeDetail || !selectedRecipe ? (
+          <RecipeList selectRecipe={selectRecipeHandler} />
+        ) : (
+          <RecipeDetail goBack={goBack} />
+        )}
+      </div>
       <FavoriteRecipes />
     </div>
   );

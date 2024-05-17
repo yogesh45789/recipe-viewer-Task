@@ -1,4 +1,42 @@
 .recipeDetail {
-    transition: opacity 0.5s;
-  }
-  
+  transition: opacity 0.5s ease-in-out;
+  position: relative;
+}
+
+.noSelection {
+  text-align: center;
+  font-size: 1.2em;
+  color: #999;
+}
+
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  color: #007bff;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #ccc;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.favoriteButton.favorited {
+  color: gold;
+}

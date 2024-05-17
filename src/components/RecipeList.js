@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectRecipe } from '../features/recipes/recipesSlice';
 import styles from '../styles/RecipeList.module.css';
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
 
-const RecipeList = () => {
+const RecipeList = ({ selectRecipe }) => {
   const recipes = useSelector(state => state.recipes.items);
   const dispatch = useDispatch();
 
@@ -26,7 +25,7 @@ const RecipeList = () => {
                 {(provided) => (
                   <div
                     className={styles.recipeItem}
-                    onClick={() => dispatch(selectRecipe(recipe.id))}
+                    onClick={() => selectRecipe(recipe.id)}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
