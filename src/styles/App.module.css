@@ -1,0 +1,25 @@
+.app {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .recipeList {
+    width: 30%;
+    border-right: 1px solid #ccc;
+  }
+  
+  .recipeDetail {
+    width: 70%;
+    padding: 20px;
+  }
+  
+  .favoriteRecipes {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f8f8f8;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+  }
+  

@@ -1,0 +1,16 @@
+.recipeList {
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .recipeItem {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .recipeItem:hover {
+    background: #f0f0f0;
+  }
+  
