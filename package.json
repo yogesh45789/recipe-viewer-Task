@@ -2,7 +2,7 @@
   "name": "recipe-viewer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/yogesh45789/.github.io/recipe-viewer-Task",
+  "homepage": "https://yogesh45789.github.io/recipe-viewer-Task",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -46,5 +46,4 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   }
-  
 }
