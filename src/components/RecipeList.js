@@ -1,13 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import styles from '../styles/RecipeList.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
+import { reorderRecipes } from '../features/recipes/recipesSlice';
+import styles from '../styles/RecipeList.module.css';
 
 const RecipeList = ({ selectRecipe }) => {
-  const recipes = useSelector(state => state.recipes.items);
+  const dispatch = useDispatch();
+  const recipes = useSelector(state => state.recipes.recipes);
 
-  const onDragEnd = result => {
-    // handle drag and drop logic
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+
+    dispatch(reorderRecipes({
+      sourceIndex: result.source.index,
+      destinationIndex: result.destination.index,
+    }));
   };
 
   return (
@@ -15,26 +22,29 @@ const RecipeList = ({ selectRecipe }) => {
       <Droppable droppableId="recipe-list">
         {(provided) => (
           <div
-            className={styles.recipeList}
+            className={styles.recipeListContainer}
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            {recipes.map((recipe, index) => (
-              <Draggable key={recipe.id} draggableId={recipe.id} index={index}>
-                {(provided) => (
-                  <div
-                    className={styles.recipeItem}
-                    onClick={() => selectRecipe(recipe.id)}
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    {recipe.name}
-                  </div>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
+            <h2 className={styles.heading}>Recipe List</h2>
+            <ul className={styles.list}>
+              {recipes.map((recipe, index) => (
+                <Draggable key={recipe.id} draggableId={recipe.id.toString()} index={index}>
+                  {(provided) => (
+                    <li
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      className={styles.listItem}
+                      onClick={() => selectRecipe(recipe.id)}
+                    >
+                      {recipe.name}
+                    </li>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </ul>
           </div>
         )}
       </Droppable>
@@ -43,3 +53,4 @@ const RecipeList = ({ selectRecipe }) => {
 };
 
 export default RecipeList;
+

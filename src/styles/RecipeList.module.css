@@ -16,7 +16,7 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.5em;
-  color:#121111;
+  color: #c6fbbc;
 }
 
 .list {
@@ -31,12 +31,13 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   background: linear-gradient(to bottom right, #4dc9fa, #ffb6c1);
-  color: #141414;
+  color: hsl(0, 29%, 97%);
+  user-select: none; /* Prevent text selection while dragging */
 }
 
 .listItem:hover {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: #b2b8bc;
+  color: #460342;
 }
 
 @media (max-width: 768px) {
@@ -52,4 +53,9 @@
   padding: 20px;
   color: #fff;
   margin-bottom: 20px;
+}
+
+/* Additional styles for drag-and-drop */
+.dragging {
+  background-color: #e0e0e0; /* Change background color while dragging */
 }
