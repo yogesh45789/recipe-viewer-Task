@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/yogesh45789/.github.io/recipe-viewer-Task/static/css/main.03bbe45e.css",
+    "main.js": "/yogesh45789/.github.io/recipe-viewer-Task/static/js/main.0acae010.js",
+    "index.html": "/yogesh45789/.github.io/recipe-viewer-Task/index.html",
+    "main.03bbe45e.css.map": "/yogesh45789/.github.io/recipe-viewer-Task/static/css/main.03bbe45e.css.map",
+    "main.0acae010.js.map": "/yogesh45789/.github.io/recipe-viewer-Task/static/js/main.0acae010.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03bbe45e.css",
+    "static/js/main.0acae010.js"
+  ]
+}
